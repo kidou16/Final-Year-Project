@@ -23,7 +23,7 @@
 - ## Setup and Installation
     - To get this project running on your local machine, follow these simple steps.
         1. Clone the Repository
-            git clone https://github.com/your-username/Final-Year-Project.git
+            git clone https://github.com/kidou16/Final-Year-Project.git
             
             cd Final-Year-Project
 
