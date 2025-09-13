@@ -1,60 +1,47 @@
 {% extends "layout.html" %}
 {% block content %}
+<div class="row">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                Upload Pomegranate Image
+            </div>
+            <div class="card-body">
+                <img src="{{ url_for('static', filename='images/test_image.jpg') }}" alt="Pomegranate" class="img-fluid mb-3">
 
-<div class="w3-card-4 w3-margin">
+                <form action="" method="post" enctype="multipart/form-data" id="upload-form">
 
-    <header class="w3-container w3-green">
-      <h1>Upload Pomegranate Image</h1>
-    </header>
-    <img src="static/images/test_image.jpg" alt="Alps" style="width:50%">
-    <br>
-    <form class="w3-container w3-margin" action="" method="post" enctype="multipart/form-data">
-        <input class="w3-btn w3-black" type="file" name="photo" accept="image/*"/>
-        <input class="w3-btn w3-black" name="sub" type="submit" value="Upload">
-        <input class="w3-btn w3-black" name="sub" type="submit" value="Test">
-    </form>
+                    <input type="file" id="photo-input" name="photo" accept="image/*" class="d-none" onchange="document.getElementById('upload-form').submit();">
 
-    <br>
-    <footer class="w3-container w3-green">
-      <h5></h5>
-    </footer>
-    
-    </div>
+                    <label for="photo-input" class="btn btn-primary">Choose Image to Upload</label>
 
-    <div class="w3-card-4 w3-margin">
+                    <button type="submit" name="sub" value="Test" class="btn btn-success">Test</button>
+                </form>
 
-        <header class="w3-container w3-blue">
-          <h1>Test Report</h1>
-        </header>
-        
-        <div class="w3-container">
-          <p>{{ result }}
-        </p>
+            </div>
         </div>
-        
-        <footer class="w3-container w3-blue">
-          <h5></h5>
-        </footer>
     </div>
-
-    <div class="w3-card-4 w3-margin">
-
-      <header class="w3-container w3-purple">
-        <h1>Pesticides/Fungicides Infomation: </h1>
-      </header>
-      
-      <div class="w3-container">
-        <p>{{ pesticide }} 
-      </p>
-        <p>{{ pesticide1 }}
-      </p>
-        <p>{{ pesticide2}}
-      </p>
-      </div>
-      
-      <footer class="w3-container w3-purple">
-        <h5></h5>
-      </footer>
-  </div>
-
-    {% endblock %}
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                Test Report
+            </div>
+            <div class="card-body">
+                {% if result %}
+                    <p>{{ result }}</p>
+                {% endif %}
+            </div>
+        </div>
+        <div class="card mt-4">
+            <div class="card-header">
+                Pesticides/Fungicides Information
+            </div>
+            <div class="card-body">
+                <p>{{ pesticide }}</p>
+                <p>{{ pesticide1 }}</p>
+                <p>{{ pesticide2 }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
